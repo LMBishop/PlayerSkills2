@@ -1,0 +1,258 @@
+# | =================================================== |
+# | Thank you for purchasing and downloading my plugin: |
+# |                    PlayerSkills2                    |
+# |                 Created by LMBishop                 |
+# |                                                     |
+# |                         =x=                         |
+# |                                                     |
+# |              File comments should help              |
+# |                 you with the config.                |
+# |                                                     |
+# |                         =x=                         |
+# |                                                     |
+# | =================================================== |
+
+# this is the section where each skill can be customised and how they look in the GUI
+skills:
+  strength:
+    display:
+      name: "&cStrength Overview"
+      type: IRON_SWORD
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill increases damage dealt to other players."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cDamage dealt: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      #uncomment the following lines for world restrictions
+      #only-in-worlds:
+      #  - "worldname"
+      max-level: 10
+      gui-slot: 11
+      damage-increment: 6             # every level, damage will increase by 6%
+  resistance:
+    display:
+      name: "&cResistance Overview"
+      type: IRON_CHESTPLATE
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill decreases damage received."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cIncoming damage: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      max-level: 10
+      gui-slot: 12
+      damage-drop: 3                  # every level, 3% of damage will be dampened
+  dodge:
+    display:
+      name: "&cDodge Overview"
+      type: SUGAR
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill gives a chance to completely dodge attacks."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cDodge chance: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      max-level: 6
+      gui-slot: 13
+      percent-increase: 2             # every level, 2% more chance to dodge attacks
+  criticals:
+    display:
+      name: "&cCriticals Overview"
+      type: BLAZE_POWDER
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill gives a chance to deal a critical (150%) shot."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cCritical chance: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      max-level: 3
+      gui-slot: 14
+      percent-increase: 4             # every level, 4% more chance to deal criticals
+      critical-multiplier: 1.5        # 150% damage
+  archery:
+    display:
+      name: "&cArchery Overview"
+      type: BOW
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill increases damage dealt using bows."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cBow damage dealt: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      max-level: 10
+      gui-slot: 15
+      damage-increment: 6             # every level, damage will increase by 6%
+  gluttony:
+    display:
+      name: "&cGluttony Overview"
+      type: WHEAT
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill increases the amount of food ingested from a single item."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cFood heal amount: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      max-level: 4
+      gui-slot: 21
+      percent-increase: 50            # every level, food intake will increase by 50%
+  health:
+    display:
+      name: "&cHealth Overview"
+      type: APPLE
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill increases the amount of health you have."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cExtra hearts: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      max-level: 5
+      gui-slot: 22
+      extra-health-per-level: 1       # every level, 1 heart (2 HP) is added
+      compatibility-mode: false
+    price-override:                   # price override allows you to set the price at each level
+      1: 1
+      2: 3
+      3: 10
+      4: 25
+      5: 50                           # (make sure you keep going until the max-level otherwise it'll default to 1!)
+  lacerate:
+    display:
+      name: "&cLacerate Overview"
+      type: REDSTONE
+      lore:
+       - "&eLeft-Click &7to upgrade this skill using &e{skillprice} &7point(s)."
+       - "&7This skill increases the chance of making an enemy bleed."
+       - "&7Level: &e{level}&7/&e{max}&7"
+       - " "
+       - "&cCut chance: "
+       - "   &e{prev} &7 >>> &e{next}"
+    config:
+      max-level: 4
+      gui-slot: 23
+      percent-increase: 4             # every level, chance to bleed will increase by 4%
+      bleed-cycles: 8                 # the amount of times a player will lose health from a single cut
+      bleed-interval: 50              # the interval (in TICKS, 20 = 1 second) of bleed cycles
+      bleed-damage: 2                 # the amount of damage a bleed cycle will do (HP, 2 = 1 heart)
+      apply-to-non-players: false     # whether or not non-players can bleed
+
+# You can disable specific skills from being registered here.
+disabled-skills:
+ - "some-skill-id"
+
+###### Developers ######
+# For those registering their own custom skills, they can be added to the config using the following:
+#
+# skill-config-name:
+#   display:
+#     name: "Skill Overview"
+#     type: SOME_ITEM
+#     lore:
+#      - "Some string list, where {prev} is replaced by the return value of getPreviousString() and {next} is replaced with getNextString()"
+#   config:
+#     max-level: 1      # MUST BE PRESENT
+#     gui-slot: 1       # MUST BE PRESENT
+#     # any other keys can go here, they can all be accessed by calling getConfig() (returns HashMap<String, Object>)
+#
+# You can add your own skill by extending the Skill class and registering it using the method in the PlayerSkills main class.
+# They are automatically registered with the Bukkit event API.
+########################
+
+gui:
+  title: "Skills"
+  size: 27
+  background:
+    enabled: true
+    name: " "
+    type: "STAINED_GLASS_PANE:7"
+  placeholders:
+    skillprice-max: "--"
+    next-max: "--"
+  other:
+    # if you really wanted to, you could add other pseudo-items here to the gui - however you must not remove "points" or "reset"
+    info:
+      slot: 3
+      name: "&cInformation"
+      type: "PAPER"
+      lore:
+       - "&cSkill points &7can be bought using XP or money."
+       - "&7These points can be used to upgrade &cskills."
+       - "&7Each skill has its own individual perk."
+    points:
+      slot: 4
+      name: "&cSkill Points"
+      type: "BOOK"
+      lore:
+       - "&7You have &e{points} &7points."
+       - "&eLeft-Click &7to purchase a skill point for &e{price}&7."
+       - " "
+       - "&7XP: {xpbar}"
+    reset:
+      slot: 5
+      name: "&cReset"
+      type: "TNT"
+      lore:
+       - "&eLeft-Click &7to completely reset your skills."
+       - "&7This costs &e1 &7skill point."
+       - "&7Other skill points invested in existing skills will be refunded."
+       - " "
+       - "&cThis action is irreversible."
+
+gui-confirmation:
+  enabled:
+    purchase-skills: false
+    purchase-skill-points: false
+    reset-skills: true
+  title: "Are you sure?"
+  background:
+    enabled: true
+    name: " "
+    type: "STAINED_GLASS_PANE:7"
+  accept:
+    name: "&a&lConfirm"
+    type: "STAINED_GLASS_PANE:5"
+    lore:
+      - "&7Confirm action."
+  deny:
+    name: "&c&lDecline"
+    type: "STAINED_GLASS_PANE:14"
+    lore:
+      - "&7Decline and return to the previous menu."
+
+points:
+  price: 1                            # base price per level
+  reset-price: 1                      # it will cost 1 skill point to reset all skills
+  refund-skill-points: true           # when skill points are reset, all points spent in skills will be refunded
+  funding-source: XP                  # accepts either VAULT or XP
+  dynamic-price:
+    enabled: false                    # if true, the price will increase based on total skill points bought and spent
+    price-increase-per-point: 1       # for every skill point bought, the price of the next will increase by 1 level
+
+options:
+  logging:
+    verbose: false
+  # uncomment to only allow the skills menu to open in certain worlds
+  #menu-world-restriction:
+  #  - "worldname"
+
+# Configure messages
+messages:
+  critical: "&a*** CRITICAL HIT ***"
+  dodge: "&a*** ATTACK DODGED ***"
+  bleeding-enemy: "&a*** ENEMY BLEEDING ***"
+  bleeding-self: "&c*** YOU ARE BLEEDING ***"
+  menu-world-restriction: "&cYou cannot modify your skills in your current location."

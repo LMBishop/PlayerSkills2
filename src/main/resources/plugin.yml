@@ -1,0 +1,27 @@
+name: PlayerSkills2
+
+# This will be replaced with the property "release.version" in pom.xml upon build.
+version: %PLUGIN_VERSION%
+
+main: com.leonardobishop.playerskills2.PlayerSkills
+author: lmbishop
+prefix: PlayerSkills2
+softdepend: [Vault, ProtocolLib]
+
+commands:
+  skills:
+    description: Open skills menu
+    usage: /skills
+    permission: playerskills.command
+    aliases: [s, skills, skill]
+  skillsadmin:
+    description: Change players skill points
+    usage: /skillsadmin
+    permission: playerskills.admin
+    aliases: [sa, skillsadmin, skilladmin]
+
+permissions:
+  playerskills.command:
+    description: Skills permission
+  playerskills.admin:
+    description: Skills admin commands
